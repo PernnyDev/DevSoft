@@ -1,8 +1,10 @@
-# 1 Faça um programa que peça uma nota, entre zero e dez. Mostre uma mensagem caso o valor seja inválido e continue pedindo até que o usuário informe um valor válido.
+# 2 Faça um programa que leia um nome de usuário e a sua senha e não aceite a senha igual ao nome do usuário, mostrando uma mensagem de erro e voltando a pedir as informações.
+
 while True:
-    nota = int(input("Digite uma nota entre 0 e 10: "))
-    if nota >= 0 and nota <= 10:
-        print("Nota válida!")
+    nome = input('Digite seu nome: ')
+    senha = input('Digite sua senha: ')
+    if nome != senha:
+        print('Cadastro realizado com sucesso! Nome:',nome,'Senha:',senha,'.')
         break
     else:
-        print("Nota inválida! Tente novamente.")
+        print('Erro! Nome e senha não podem ser iguais! Tente novamente.')
