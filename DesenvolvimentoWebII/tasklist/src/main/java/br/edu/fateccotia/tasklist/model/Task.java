@@ -8,25 +8,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="task")
-
+@Table(name = "task")
 public class Task {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private String descrition;
+	private String description;
 	private TaskStatus status = TaskStatus.PENDING;
 	
-	public Task () {
-		
+	public Task() {
 	}
 
-	public Task(Integer id, String descrition, TaskStatus status) {
+	public Task(Integer id, String description, TaskStatus status) {
 		this.id = id;
-		this.descrition = descrition;
+		this.description = description;
 		this.status = status;
-		
 	}
 
 	public Integer getId() {
@@ -37,12 +33,12 @@ public class Task {
 		this.id = id;
 	}
 
-	public String getDescrition() {
-		return descrition;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescrition(String descrition) {
-		this.descrition = descrition;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public TaskStatus getStatus() {
@@ -52,7 +48,7 @@ public class Task {
 	public void setStatus(TaskStatus status) {
 		this.status = status;
 	}
-	
-	
 
+
+	
 }
