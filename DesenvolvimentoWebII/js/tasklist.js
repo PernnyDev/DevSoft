@@ -8,19 +8,21 @@ document.onreadystatechange = () => {
 }
 
 const taskgetAll = () => {
-  $.getJSON(`${url}/all`, function(data) {
-    FileList(data);    
+    $.getJSON(`${url}/all`, function (data) {
+        FileList(data);
     })
 }
 
 const FileList = (tasks) => {
     tasklist = tasks;
     const ul = $("<ul>");
-    tasklist.forEach(e =>{
+    tasklist.forEach(e => {
         const li = $("<li>");
-        const chk = $(`<input type='checkbox' id='${e.id}' value='${e.id}'>`);
+        const chk = $(`<input type='checkbox' id='${e.id}' value='${e.id}'onclick='markToggle(this.value)' ${(e.status == 'DONE') ? 'checked' : ''} >`);
         const lbl = $(`<label for='${e.id}'> ${e.description}</label>`);
-        ul.append(li.append(chk).append(lbl));
+        const btn = $(`<button id='d-${e.id}' onclick='deleteTask(this.id)'> Excluir</button>`);
+        ul.append(li.append(chk, lbl, btn));
+       
 
     })
     $("#task-list").empty();
@@ -44,28 +46,38 @@ const taskCreate = () => {
     });
 
 
-
-
-
 }
 
-const taskDelete = () => {
-    const selectedTasks = [];
-    $("input[type='checkbox']:checked").each(function() {
-        selectedTasks.push($(this).val());
-    });
-
-    if (selectedTasks.length === 0) {
-        alert("Selecione pelo menos uma tarefa para excluir.");
-        return;
-    }
+const deleteTask = (taskId) => {
+    console.log(taskId);
+    const id = taskId.substring(2);
 
     $.ajax({
-        url: `${url}/delete`,
+        url: `${url}/${id}`,
         type: 'DELETE',
         contentType: 'application/json',
         dataType: 'json',
-        data: JSON.stringify(selectedTasks),
+       
+        success: (res) => {
+            console.log(res);
+            taskgetAll();
+        }
+    });
+}
+
+
+const markToggle = (taskId) => {
+    const t = tasklist.find(e => e.id == taskId);
+    const description = $("#addtask-desc").val();
+    //"  ${description}"
+    const body = `{"description":"${t.description}"   ,"status":"${(t.status == 'DONE') ? 'PENDING' : 'DONE'}"}`;
+    console.log(t);
+    $.ajax({
+        url: `${url}/${t.id}`,
+        type: 'PUT',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: body,
         success: (res) => {
             console.log(res);
             taskgetAll();
@@ -74,4 +86,6 @@ const taskDelete = () => {
             console.error(err);
         }
     });
+
+
 }
