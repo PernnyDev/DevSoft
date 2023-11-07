@@ -1,0 +1,18 @@
+package estudopilha;
+
+public class PilhaDinamica {
+	No topo;
+	int tam;
+	
+	PilhaDinamica() {
+		topo = null;
+		tam = 0;
+
+	}
+	
+	void empilhar(int info) {
+		
+		
+		
+	}
+}

@@ -1,0 +1,8 @@
+package estudopilha;
+
+public class PilhaDinamica {
+	No topo;
+	
+	
+	
+}

@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\Aluno\Desktop\Eclipse\aula sexta\.metadata\.plugins\org.eclipse.jdt.core
+3630028596.index
+1259495958.index
+1865797976.index

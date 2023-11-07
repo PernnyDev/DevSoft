@@ -1,0 +1,27 @@
+package estudopilha;
+
+public class EstudoPilha {
+
+	public static void main(String[] args) {
+
+		PilhaDinamica p1 = new PilhaDinamica();
+		p1.empilhar(10);
+		p1.empilhar(20);
+		p1.empilhar(30);
+		
+		p1.exibirPilha();
+		
+		p1.desempilhar();
+		//p1.exibirPilha();
+		
+		p1.desempilhar();
+		//p1.exibirPilha();
+		
+		p1.desempilhar();
+		//p1.exibirPilha();
+		
+		p1.exibirTopo();
+		p1.exibirTam();
+	}
+
+}

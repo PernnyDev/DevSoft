@@ -1,0 +1,29 @@
+package estudopilha;
+
+public class PilhaDinamica {
+	No topo;
+	int tam;
+	
+	PilhaDinamica() {
+		topo = null;
+		tam = 0;
+
+	}
+	
+	void empilhar(int info) {
+		
+		No no = new No();
+		no.info = info;
+		no.prox = topo;
+		tam++;
+		topo = no;	
+	}
+	void exibirPilha() {
+		No aux = topo;
+		
+		while(aux!=null) {
+			System.out.println("Info =" +aux.info);
+			aux = aux.prox;
+		}
+	}
+}

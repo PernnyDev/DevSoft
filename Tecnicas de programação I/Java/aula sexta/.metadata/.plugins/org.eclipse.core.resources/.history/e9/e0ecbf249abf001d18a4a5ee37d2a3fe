@@ -1,0 +1,12 @@
+package estudopilha;
+
+public class EstudoPilha {
+
+	public static void main(String[] args) {
+
+		PilhaDinamica p1 = new PilhaDinamica();
+		System.out.println(p1.tam);
+		System.out.println(p1.topo);
+	}
+
+}
